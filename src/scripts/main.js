@@ -46,7 +46,18 @@ function render() {
 
   for (let row = 0; row < 4; row++) {
     for (let col = 0; col < 4; col++) {
-      cells[index].textContent = state[row][col] || '';
+      const value = state[row][col];
+      const cell = cells[index];
+
+      cell.className = 'field-cell';
+
+      if (value !== 0) {
+        cell.classList.add(`field-cell--${value}`);
+        cell.textContent = value;
+      } else {
+        cell.textContent = '';
+      }
+
       index++;
     }
   }
